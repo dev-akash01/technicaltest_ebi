@@ -53,7 +53,7 @@ The project scaffolding has been done in an order to provide scalability. Files 
 --------- ModuleController.js
 --------- moduleDirective.js
 --------- moduleRoutes.js (route definitions and config options)
----localjson/Datajson.json (The json format used in project)
+---localjson/Datajson.json #(The json format used in project)
 --- app.js
 --- app.less
 --- appConfig.js (main config file - no routes are defined here)
