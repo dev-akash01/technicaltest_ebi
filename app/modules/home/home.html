@@ -1,0 +1,14 @@
+<div class="modules-home-view">
+    <div class="module-header">
+    </div>
+    <div class="wrapper">
+    	<h4>{{title}}</h4>
+        <div class="row authorsrow">
+        			<div class="col-xs-3" ng-repeat="author in authors"><span>{{author.firstName}} </span><span>{{author.lastName}}</span><sup ng-repeat="affiliation in author.affiliations">{{affiliation}}<span ng-show="{{!$last}}">, </span></sup></div>
+        </div>
+        <div class="row affRow">
+        	<div class="col-xs-12" ng-repeat="affiliation in affiliations"><sup>{{affiliation.affId}}</sup><span>{{affiliation.affName}}</span></div>
+        </div>
+
+    </div>
+</div>

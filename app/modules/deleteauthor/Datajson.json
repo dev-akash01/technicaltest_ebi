@@ -1,0 +1,48 @@
+{
+  "title": "Decoupling Sensor Networks from Rasterization in Congestion Control",
+  "authors": [
+    {
+      "firstName": "Alice",
+      "lastName": "Abaraham",
+      "affiliations": [
+        1
+      ]
+    },
+    {
+      "firstName": "Bill",
+      "lastName": "Byron",
+      "affiliations": [
+        2
+      ]
+    },
+    {
+      "firstName": "Christie",
+      "lastName": "Chang",
+      "affiliations": [
+        1,
+        2
+      ]
+    },
+    {
+      "firstName": "David",
+      "lastName": "Doel",
+      "affiliations": [
+        3
+      ]
+    }
+  ],
+  "affiliations": [
+    {
+      "affId": 1,
+      "affName": "University of Utopia"
+    },
+    {
+      "affId": 2,
+      "affName": "Neverland Institute of Technology"
+    },
+    {
+      "affId": 3,
+      "affName": "University of Argleton"
+    }
+  ]
+}
