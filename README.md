@@ -93,8 +93,8 @@ Also, the testing can be performed manually as well as it can be automated writi
 
 # Answer 3:
 
-In case of thousands or more than thousands of data following are the problems can be forseen:
-The solution provided in Answer 1 can handle large data because of its scalible structure. However, there were limitations while mocking the backend data. Since myjson api provides GET POST and PUT methods, there were no custom post methods which can be used.
+In case of thousands or more than thousands of data following are the problems that can be forseen:
+The solution provided in Answer 1 can handle large data because of its scalable structure. However, there were limitations while mocking the backend data. Since myjson api provides GET POST and PUT methods, there were no custom post methods which can be used.
 
 General problems with large data - 
 - Data managment. 
