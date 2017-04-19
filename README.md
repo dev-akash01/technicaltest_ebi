@@ -9,7 +9,6 @@ Gulp,
 Browserify,
 AngularJS,
 Bootstrap,
-RequireJS,
 ESlint,
 loadash,
 myjson api
