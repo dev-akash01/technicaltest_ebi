@@ -75,11 +75,11 @@ Bower dependencies should install automatically at the end of the NPM install pr
 
 
 ### Development, Test, Production, and Deployment
-DEV: During development you should be using the standard ```gulp-dev``` task (unless you need to rebuild your dist files, at which point you can run ```gulp build```).
+DEV: During development you should be using the standard ```gulp build-dev``` task (unless you need to rebuild your dist files, at which point you can run ```gulp build```).
 
-TEST: ```gulp test``` Karma is included in the package but not used.
+TEST: ```gulp build-test``` Karma is included in the package but not used.
 
-PROD: ```gulp prod``` to run the production build pipeline, which will minify and concatenate your files. Production files are still sent to the ```/dist``` folder.
+PROD: ```gulp build-prod``` to run the production build pipeline, which will minify and concatenate your files. Production files are still sent to the ```/dist``` folder.
 
 # Answer 2:
 The interface can be test as following flow:
@@ -93,7 +93,7 @@ Also, the testing can be performed manually as well as it can be automated writi
 
 # Answer 3:
 
-In case of thousands or more than thousands author following are the problems can be seen:
+In case of thousands or more than thousands of data following are the problems can be forseen:
 The solution provided in Answer 1 can handle large data because of its scalible structure. However, there were limitations while mocking the backend data. Since myjson api provides GET POST and PUT methods, there were no custom post methods which can be used.
 
 General problems with large data - 
