@@ -1,17 +1,17 @@
 # Technical test - Problem 1
 
-# Annswer 1:
+# Answer 1:
 
 ****************************************************
-Basic Techology Stack - 
-Nodejs
-Gulp
-Browserify
-AngularJS
-Bootstrap
-RequireJS
-ESlint
-loadash
+Basic Techology Stack consumed - 
+Nodejs,
+Gulp,
+Browserify,
+AngularJS,
+Bootstrap,
+RequireJS,
+ESlint,
+loadash,
 myjson api
 ****************************************************
 
@@ -81,7 +81,7 @@ TEST: ```gulp test``` Karma is included in the package but not used.
 
 PROD: ```gulp prod``` to run the production build pipeline, which will minify and concatenate your files. Production files are still sent to the ```/dist``` folder.
 
-# Annswer 2:
+# Answer 2:
 The interface can be test as following flow:
 
 1. Check for data availabality. Prompt user in case data is unavailable.
@@ -91,7 +91,7 @@ The interface can be test as following flow:
 
 Also, the testing can be performed manually as well as it can be automated writing test cases.
 
-# Annswer 3:
+# Answer 3:
 
 In case of thousands or more than thousands author following are the problems can be seen:
 The solution provided in Answer 1 can handle large data because of its scalible structure. However, there were limitations while mocking the backend data. Since myjson api provides GET POST and PUT methods, there were no custom post methods which can be used.
