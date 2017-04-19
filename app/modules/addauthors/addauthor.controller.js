@@ -16,10 +16,9 @@ Description: Controller has following functionalities:
 // Controller naming conventions should start with an uppercase letter
 function AddauthorCtrl($scope, $state, $timeout, AddauthorModel, CONSTANTS, AlertsManager) {
   $scope.disableTitle = true;
-
-/// Authors array. [{firstName: author first name, lastname: author lastname, affiliations: [author affiliations]}]
-  $scope.authors = []; 
-/// Affiliations array. [{affName: affilation name, affId: affiliation id}]
+  /// Authors array. [{firstName: author first name, lastname: author lastname, affiliations: [author affiliations]}]
+  $scope.authors = [];
+  /// Affiliations array. [{affName: affilation name, affId: affiliation id}]
   $scope.affiliations = [];
   $scope.titleObj = '';
   $scope.updatetitlechecked = false;
@@ -27,33 +26,29 @@ function AddauthorCtrl($scope, $state, $timeout, AddauthorModel, CONSTANTS, Aler
   $scope.newAffliation = true;
   $scope.newAffIdInAuthor = true;
   $scope.tempTitle = '';
-
   //model objects
   $scope.affiliationObj = {
     affId: '',
     affName: ''
   };
-
   $scope.inputObject = {
     firstName: '',
     lastName: '',
     affiliations: []
   };
-
-//// Initialize and set data
+  //// Initialize and set data
   function init() {
     AlertsManager.clearAlerts();
-  var _lsfirstName = localStorage.getItem('firstName');
-  var _lslastName = localStorage.getItem('lastName');
-  var _lsaffName = localStorage.getItem('affName');
-
-    if(_lsfirstName !== null){
+    var _lsfirstName = localStorage.getItem('firstName');
+    var _lslastName = localStorage.getItem('lastName');
+    var _lsaffName = localStorage.getItem('affName');
+    if (_lsfirstName !== null) {
       $scope.inputObject.firstName = _lsfirstName;
     }
-    if(_lslastName !== null){
+    if (_lslastName !== null) {
       $scope.inputObject.lastName = _lslastName;
     }
-    if(_lsaffName !== null){
+    if (_lsaffName !== null) {
       $scope.affiliationObj.affName = _lsaffName;
     }
     AddauthorModel.getjsondata().then(function(data) {
@@ -62,46 +57,34 @@ function AddauthorCtrl($scope, $state, $timeout, AddauthorModel, CONSTANTS, Aler
       $scope.titleObj = data.data.title;
       $scope.tempTitle = data.data.title;
       $scope.dataAvailabale = true;
-    }, function() {
-
-    });
-
+    }, function() {});
     $scope.alerts = AlertsManager.alerts;
   }
   init();
-
-//// Service call success alert
+  //// Service call success alert
   $scope.serviceSuccess = function(alertMessage) {
     AlertsManager.addAlert(alertMessage, 'alert-success');
-
     $timeout(function() {
       AlertsManager.clearAlerts();
       $state.transitionTo('home');
     }, 3000);
-
   };
-
-//// Generic alerts
-
+  //// Generic alerts
   $scope.genericAlerts = function(alertMessage, alertType) {
     AlertsManager.addAlert(alertMessage, alertType);
   };
-
-//// Resets the input fields
+  //// Resets the input fields
   function resetInput() {
     $scope.affiliationObj = {
       affId: '',
       affname: ''
     };
-
     $scope.inputObject = {
       firstName: '',
       lastName: '',
       affiliations: []
     };
   }
-
-
   // Setting local storage
   $scope.getValues = function() {
     if ($scope.inputObject.firstName !== '') {
@@ -114,9 +97,7 @@ function AddauthorCtrl($scope, $state, $timeout, AddauthorModel, CONSTANTS, Aler
       localStorage.setItem('affName', $scope.affiliationObj.affName);
     }
   };
-
-
-/// Checks if the update tile checkbox is checked and enable and disable the title input field.
+  /// Checks if the update tile checkbox is checked and enable and disable the title input field.
   $scope.titlechange = function(check) {
     if (check) {
       $scope.disableTitle = false;
@@ -127,12 +108,10 @@ function AddauthorCtrl($scope, $state, $timeout, AddauthorModel, CONSTANTS, Aler
       }
     }
   };
-
   /// cancel and return to home
   $scope.cancel = function() {
     $state.transitionTo('home');
   };
-
   // Function to set updated object and make a a service call
   function addAuthorToJson(alertMessage, titleObj, updateAuthors, updateAffiliations) {
     $scope.updateObj = {};
@@ -143,8 +122,6 @@ function AddauthorCtrl($scope, $state, $timeout, AddauthorModel, CONSTANTS, Aler
       'authors': updateAuthors,
       'affiliations': updateAffiliations
     };
-
-
     AddauthorModel.addAuthorToJson($scope.updateObj).then(function() {
       $scope.authorupdated = true;
       $scope.serviceSuccess(alertMessagetext);
@@ -153,37 +130,30 @@ function AddauthorCtrl($scope, $state, $timeout, AddauthorModel, CONSTANTS, Aler
       $scope.genericAlerts(CONSTANTS.addAuthor.errorMessage, 'alert-danger');
       $scope.authorupdated = false;
     });
-
   }
-
   // Main function to do object manupulation and logic
   $scope.saveData = function() {
-
     AlertsManager.clearAlerts();
     $scope.onlyauthoradded = false;
     $scope.authorandaffadded = false;
     $scope.affiliationAdded = false;
     $scope.validSubmit = true;
-
     // check if title is blank
     if ($scope.titleObj === '' || $scope.titleObj === undefined || $scope.titleObj === null) {
       $scope.genericAlerts(CONSTANTS.addAuthor.titleMandatory, 'alert-info');
       $scope.validSubmit = false;
       return;
     }
-
     // check if author name is blank
     if (($scope.inputObject.firstName || $scope.inputObject.lastName) === '') {
       $scope.genericAlerts(CONSTANTS.addAuthor.authorEmpty, 'alert-info');
       $scope.validSubmit = false;
       return;
     }
-
     // factory constructor for auto incrmenting the affiliation id's 
     function MyObjectFactory() {
       this.nextId = $scope.affiliations.length + 1;
     }
-
     // factory method to create an object to push in Affiliations array
     MyObjectFactory.prototype.createObject = function(name) {
       return {
@@ -191,50 +161,36 @@ function AddauthorCtrl($scope, $state, $timeout, AddauthorModel, CONSTANTS, Aler
         affName: name
       };
     };
-
     var myFactory = new MyObjectFactory();
     var obj = {};
-
     var affliationLen = $scope.affiliations.length;
     var authorLen = $scope.authors.length;
-
-
     // If there are more than 0 authors and Affiliations
     if (affliationLen > 0 && authorLen > 0) {
-      var authorExists = false; 
-
+      var authorExists = false;
       // loop on authors array
       for (var i = 0; i < authorLen; i++) {
         // check if author exists
         if ($scope.authors[i].firstName === $scope.inputObject.firstName && $scope.authors[i].lastName === $scope.inputObject.lastName) {
           authorExists = true;
-         
           var affiliationExists = false;
-
-           // loop on affiliations array
+          // loop on affiliations array
           for (var j = 0; j < affliationLen; j++) {
-
             // check if affiliation name exists in affiliations array
             if ($scope.affiliations[j].affName === $scope.affiliationObj.affName) {
               var tempId;
               tempId = $scope.affiliations[j].affId;
               affiliationExists = true;
-
               // check if affiliation id exists in authors affiliations array
               if ($scope.authors[i].affiliations.indexOf(tempId) === -1) {
                 $scope.authors[i].affiliations.push(tempId);
                 $scope.affiliationAdded = true;
               } else {
-
                 $scope.genericAlerts(CONSTANTS.addAuthor.authorAffiliation, 'alert-info');
                 $scope.validSubmit = false;
                 return;
-                
               };
-
-             
             }
-
           }
           // if affiliations does not exists create one
           if (affiliationExists === false) {
@@ -244,12 +200,9 @@ function AddauthorCtrl($scope, $state, $timeout, AddauthorModel, CONSTANTS, Aler
               $scope.authors[i].affiliations.push(obj.affId);
               $scope.affiliationAdded = true;
             }
-
           }
         }
-
       }
-
       // incase of new author
       var addAuthorAffIdCheck = function() {
         var affiliationExists = false;
@@ -275,23 +228,14 @@ function AddauthorCtrl($scope, $state, $timeout, AddauthorModel, CONSTANTS, Aler
           } else {
             $scope.affiliationAdded = false;
           }
-
         }
         // push the final object in authors array.
         $scope.authors.push($scope.inputObject);
-
       };
-
       if (authorExists === false) {
         addAuthorAffIdCheck();
       }
-
-
-
-
-
     } else {
-
       // incase of first author
       if ($scope.affiliationObj.affName !== '') {
         obj = myFactory.createObject($scope.affiliationObj.affName);
@@ -300,7 +244,6 @@ function AddauthorCtrl($scope, $state, $timeout, AddauthorModel, CONSTANTS, Aler
       } else {
         $scope.authors.push($scope.inputObject);
       }
-
     }
     var globalalertMessage = '';
     if ($scope.affiliationAdded) {
@@ -311,12 +254,9 @@ function AddauthorCtrl($scope, $state, $timeout, AddauthorModel, CONSTANTS, Aler
     if ($scope.validSubmit === true) {
       addAuthorToJson(globalalertMessage, $scope.titleObj, $scope.authors, $scope.affiliations);
     }
-
     resetInput();
   }
-
 }
-
 // $inject is necessary for minification.
 AddauthorCtrl.$inject = ['$scope', '$state', '$timeout', 'AddauthorModel', 'CONSTANTS', 'AlertsManager'];
 module.exports = AddauthorCtrl;

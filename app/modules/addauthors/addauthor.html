@@ -1,37 +1,32 @@
 <div class="modules-addauthor-view">
-<div class="module-header"><h1>Add an author and affiliation</h1></div>
-    	
-	<!-- <button ng-click="deletedata()">Delete User</button>
+    <div class="module-header">
+      <h1>Add an author and affiliation</h1>
+    </div><!-- <button ng-click="deletedata()">Delete User</button>
     <button ng-click="successAuthor()">load json User</button>
      -->
     <div class="wrapper">
-    <form name="ebi" novalidate>
+      <form id="ebi" name="ebi" novalidate="">
         <div class="row mb">
-          <label class="col-xs-4 control-label" for="firstName">Title</label>  
+          <label class="col-xs-4 control-label" for="firstName">Title</label>
           <div class="col-xs-4">
-          <input id="title" name="title" type="text" placeholder="" ng-model="titleObj" ng-disabled="disableTitle" class="form-control input-md" required/>
+            <input class="form-control input-md" id="title" name="title" placeholder="" type="text">
           </div>
-        <div class="checkbox col-xs-4">
-            <label for="updatetitlecheck">
-              <input type="checkbox" ng-model="updatetitlechecked" name="updatetitlecheck" id="updatetitlecheck" ng-change="titlechange(updatetitlechecked)">
-              Update Title
-            </label>
+          <div class="checkbox col-xs-4">
+            <label for="updatetitlecheck"><input id="updatetitlecheck" name="updatetitlecheck" type="checkbox"> Update Title</label>
+          </div>
         </div>
-          </div>
-        <ebi-add-author-form input-object="inputObject" affiliation-obj="affiliationObj" change="getValues()"></ebi-add-author-form>
-        </form>
+      </form>
     </div>
-    <div ng-repeat="(key,val) in alerts" class="mt alert {{key}}">
-        <div ng-repeat="msg in val">{{msg}}</div>
+    <div class="mt alert {{key}}">
+      <div>
+        {{msg}}
+      </div>
     </div>
     <div class="row mt">
-        <div class="form-group">
-          <div class="col-md-8">
-            <button id="addauthor" name="button1id" class="btn btn-success" ng-click="saveData()">Save Changes</button>
-            <button id="button2id" name="button2id" class="btn btn-danger" ng-click="cancel()">Cancel</button>
-          </div>
+      <div class="form-group">
+        <div class="col-md-8">
+          <button class="btn btn-success" id="addauthor" name="button1id">Save Changes</button> <button class="btn btn-danger" id="button2id" name="button2id">Cancel</button>
         </div>
+      </div>
     </div>
-    
-
-</div>
+  </div>

@@ -1,20 +1,20 @@
 <div class="modules-deleteauthor-view">
-<div class="module-header"><h1>Delete an author</h1></div>
-    <div class="wrapper">
-    <form name="ebi">
-        <ebi-delete-author-form input-object="inputObject" affiliation-obj="affiliationObj" change='getValues()'></ebi-delete-author-form>
-        </form>
-    </div>
-    <div ng-repeat="(key,val) in alerts" class="mt alert {{key}}">
-        <div ng-repeat="msg in val">{{msg}}</div>
-    </div>
-    <div class="row mt">
-        <div class="form-group">
-          <div class="col-md-8">
-            <button id="addauthor" name="button1id" class="btn btn-success" ng-click="deletedata()">Save Changes</button>
-            <button id="button2id" name="button2id" class="btn btn-danger" ng-click="cancel()">Cancel</button>
-          </div>
+        <div class="module-header">
+            <h1>Delete an author</h1>
+        </div>
+        <div class="wrapper">
+            <form id="ebi" name="ebi"></form>
+        </div>
+        <div class="mt alert {{key}}">
+            <div>
+                {{msg}}
+            </div>
+        </div>
+        <div class="row mt">
+            <div class="form-group">
+                <div class="col-md-8">
+                    <button class="btn btn-success" id="addauthor" name="button1id">Save Changes</button> <button class="btn btn-danger" id="button2id" name="button2id">Cancel</button>
+                </div>
+            </div>
         </div>
     </div>
-
-</div>
