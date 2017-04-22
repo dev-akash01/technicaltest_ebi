@@ -16,7 +16,7 @@ myjson api
 
 The app is capable of the following:
 
-1. Enter title of the paper. (at ad author page)
+1. Enter title of the paper. (at add author page)
 2. Add an author.
 3. Add an affiliation.
 4. Associating authors with their corresponding affiliations.
